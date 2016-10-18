@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品分类</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script src="js/jquery.js"></script>
+		<style>
+			html{
+				font-size: 100px;
+			}
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			body{
+			    font-family: sans-serif,Helvetica,Arial,'Lucida Grande',Verdana;
+			    word-wrap: break-word;
+			    line-height: 1;
+			    min-width: 320px;
+			    background-color: #f7f7f7;
+			    max-width: 720px;
+			    margin: 0 auto;
+			    color: #333;
+			}
+			header{
+				width: 100%;
+				height: 0.42rem;
+				font-size: 0.12rem;
+				border-bottom: 1px solid #c7c7c7
+			}
+			header a{
+				text-decoration: none;
+				display:block;
+				width: 0.40rem;
+				height: 0.42rem;
+				line-height: 0.42rem;
+				font-size: 0.35rem;
+				color: black;
+				text-align: center;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			header p{
+				width: 1.44rem;
+				height: 0.42rem;
+				line-height: 0.42rem;
+				text-align: center;
+				font-size: 0.14rem;
+				margin: 0 auto;
+			}
+			header .shopingCart{
+				display: block;
+				width: 0.21rem;
+				height: 0.21rem;
+				position: absolute;
+				right: 0.1rem;
+				top:0.1rem;
+			}
+			header .shopingCart img{
+				width: 0.21rem;
+				height: 0.21rem;
+			}
+			header .shopingCart .count{
+				width:0px;
+				height: 0px;
+				border-radius: 0.06rem;
+				border:0.06rem solid red;
+				text-align: center;
+				position: absolute;
+				top: 0;
+				left: 0.06rem;
+			}
+			header .shopingCart .count span{
+				display: block;
+				width: 0.06rem;
+				height: 0.06rem;
+				color: white;
+				position: absolute;
+				top: -0.06rem;
+				left: -0.02rem;
+			}
+			.categary{
+				width: 100%;
+			}
+			.category-left{
+				width: 33.33%;
+				background-color: white;
+				float: left;
+			}
+			.category-left li{
+				list-style: none;
+				width: 100%;
+				height: 0.44rem;
+			}
+			.category-left a.oa{
+				display: block;
+				text-decoration: none;
+				color: black;
+				font-size: 0.14rem;
+				width: 0.92rem;
+				height: 0.42rem;
+				line-height: 0.42rem;
+				margin-left: 0.14rem;
+			}
+			.category-left a.current{
+				display: block;
+			    color: #e01d20!important;
+			    background: url(img/arrowToLeft.png) no-repeat right;
+			    background-size: .365em .665em;
+			    margin-right: -1px;
+				text-decoration: none;
+				color: black;
+				font-size: 0.14rem;
+				width: 0.92rem;
+				height: 0.42rem;
+				line-height: 0.42rem;
+				margin-left: 0.14rem;
+			}
+			.category-right{
+				width: 66.66%;
+				height: 5.25rem;
+				font-size: 0.14rem;
+				float: left;
+			}
+			.category-right li{
+				list-style: none;
+				width: 100%;
+				height: 0.75rem;
+				display: flex;
+				align-items: center;
+				border-bottom: 1px solid #e1e1e1
+			}
+			.category-right img{
+				width: 0.6rem;
+				height: 0.6rem;
+				float: left;
+			}
+			.category-right li span{
+				display: block;
+			}
+			.number{
+				display: none;
+			}
+			
+			.foot{
+				width: 100%;
+				height: 0.5rem;
+				font-size: 0.14rem;
+				position: fixed;
+				left: 0;
+				bottom:0 ;
+				z-index: 10;
+				background-color:white;
+				
+			}
+			.foot li{
+				list-style: none;
+				width: 20%;
+				float: left;
+			}
+			.foot a {
+				display: block;
+				text-decoration: none;
+				color:black;
+				text-align: center;
+				padding-top:0.04rem;
+			}
+			.foot span{
+				display:inline-block;
+				width: 100%;
+				height: 0.24rem;
+				line-height: 0.24rem;
+			}
+			.foot li a:before{
+				content: '';
+			    height: 0.21rem;
+			    width: 0.21rem;
+			    display: block;
+			    margin: 0 auto;
+			    background: url(img/foot.png) no-repeat;
+			   	background-size: auto 0.40rem;
+			    background-position: 0 0.01rem;
+			}
+			
+			.foot li:nth-child(1) a:before{
+				background-position:0 0.01rem ;
+			}
+			.foot li:nth-child(2) a:before{
+				background-position:-0.2rem 0.01rem ;
+			}
+			
+			.foot li:nth-child(3) a:before{
+				background-position:-0.4rem 0.01rem ;
+			}
+			
+			.foot li:nth-child(4) a:before{
+				background-position:-0.6rem -0.20rem ;
+			}
+			.foot li:nth-child(4) span{
+				color: red;
+			}
+			.foot li:nth-child(5) a:before{
+				background-position:-0.8rem 0.01rem ;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<a href=""><</a>
+			<p>商品分类</p>
+			<div class="shoppingcart">
+				<ul></ul>
+			</div>
+			<div class="shopingCart">
+				<img src="img/icon_shoppingCart.png" alt="" />
+				<div class="count"><span>0</span></div>
+			</div>
+		</header>
+		<div class="categary">
+			<div class="category-left">
+				<ul>
+					<li class=""><a href="" class="oa">手机</a></li>
+					<li><a href="" class="oa">笔记本&平板</a></li>
+					<li><a href="" class="oa">穿戴</a></li>
+					<li><a href="" class="oa">智能家居</a></li>
+					<li><a href="" class="oa">专属配件</a></li>
+					<li><a href="" class="oa">通用配件</a></li>
+				</ul>
+			</div>
+			<div class="category-right">
+				<ul class="number">
+					<li>
+						<img src="img/category1.jpg" alt="" />
+						<span>荣耀</span>
+					</li>
+					<li>
+						<img src="img/category2.jpg" alt="" />
+						<span>畅玩</span>
+					</li>
+					<li>
+						<img src="img/category3.jpg" alt="" />
+						<span>华为Mate 8系列</span>
+					</li><li>
+						<img src="img/category4.jpg" alt="" />
+						<span>华为 nova系列</span>
+					</li>
+					<li>
+						<img src="img/category5.jpg" alt="" />
+						<span>华为G系列</span>
+					</li>
+					<li>
+						<img src="img/category6.jpg" alt="" />
+						<span>华为畅享系列</span>
+					</li>
+					
+				</ul>
+				<ul class="number">
+					<li>
+						<img src="img/category7.jpg" alt="" />
+						<span>平板电脑</span>
+					</li>
+					<li>
+						<img src="img/category8.jpg" alt="" />
+						<span>MateBook</span>
+					</li>
+					<li>
+						<img src="img/category9.jpg" alt="" />
+						<span>扩展坞</span>
+					</li>
+					<li>
+						<img src="img/category10.jpg" alt="" />
+						<span>触控笔</span>
+					</li>
+					<li>
+						<img src="img/category11.jpg" alt="" />
+						<span>二合一键盘</span>
+					</li>
+				</ul>
+				<ul class="number">
+					<li>
+						<img src="img/category12.jpg" alt="" />
+						<span>手环</span>
+					</li>
+					<li>
+						<img src="img/category13.jpg" alt="" />
+						<span>手表</span>
+					</li>
+				</ul>
+				<ul class="number">
+					<li>
+						<img src="img/category14.jpg" alt="" />
+						<span>字母路由</span>
+					</li>
+					<li>
+						<img src="img/category15.jpg" alt="" />
+						<span>电视盒子</span>
+					</li>
+					<li>
+						<img src="img/category16.jpg" alt="" />
+						<span>路由器</span>
+					</li>
+					<li>
+						<img src="img/category17.jpg" alt="" />
+						<span>电力猫</span>
+					</li>
+					<li>
+						<img src="img/category18.jpg" alt="" />
+						<span>随性wifi</span>
+					</li>
+					<li>
+						<img src="img/category19.jpg" alt="" />
+						<span>hilink生态产品</span>
+					</li>
+				</ul>
+				<ul class="number">
+					<li>
+						<img src="img/category20.jpg" alt="" />
+						<span>保护壳</span>
+					</li>
+					<li>
+						<img src="img/category21.jpg" alt="" />
+						<span>保护套</span>
+					</li>
+					<li>
+						<img src="img/category22.jpg" alt="" />
+						<span>贴膜</span>
+					</li>
+					<li>
+						<img src="img/category23.jpg" alt="" />
+						<span>盒子专属配件</span>
+					</li>
+					<li>
+						<img src="img/category24.jpg" alt="" />
+						<span>表带</span>
+					</li>
+					<li>
+						<img src="img/category25.jpg" alt="" />
+						<span>电容笔</span>
+					</li>
+				</ul>
+				<ul class="number">
+					<li>
+						<img src="img/category26.jpg" alt="" />
+						<span>音箱</span>
+					<li>
+						<img src="img/category27.jpg" alt="" />
+						<span>移动电源</span>
+					</li>
+					<li>
+						<img src="img/category28.jpg" alt="" />
+						<span>充电器/线材</span>
+					</li>
+					<li>
+						<img src="img/category29.jpg" alt="" />
+						<span>U盘/存储卡</span>
+					</li>
+					<li>
+						<img src="img/category30.jpg" alt="" />
+						<span>耳机</span>
+					</li>
+					<li>
+						<img src="img/category31.jpg" alt="" />
+						<span>自拍杆/支架</span>
+					</li>
+				</ul>
+			</div>
+			<div class="foot">
+				<ul>
+					<li><a href="homepage.html" target="_self"><span>首页</span></a></li>
+					<li><a href="HUIWEI.html" target="_self"><span>华为</span></a></li>
+					<li><a href="honour.html" target="_self"><span>荣耀</span></a></li>
+					<li><a href="classification.html" target="_self"><span>分类</span></a></li>
+					<li><a href="myHUAWEI.html" target="_self"><span>我的</span></a></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		
+		<script>
+			var oA = document.querySelectorAll(".oa");
+			console.log(oA)
+			var oUl = document.querySelectorAll(".number");
+			console.log(oUl);
+			
+			oA[0].className = "current";
+			oUl[0].style.display ="block";
+			
+			//给做菜单栏添加点击事件
+			for(var i=0;i<oA.length;i++){
+				(function(m){
+					oA[m].onclick = function(e){
+						e.preventDefault()
+						clearStyle();
+						clearUl();
+						oA[m].className = "current";
+						oUl[m].style.display ="block";
+					}
+				})(i)
+			}
+			//将左边菜单栏的样式恢复原始状态
+			function clearStyle(){
+				for(var i=0;i<oA.length;i++){
+					oA[i].className = "oa";
+				}
+			}
+			//将右边栏恢复原始隐藏状态
+			function clearUl(){
+				for(var i=0;i<oUl.length;i++){
+					oUl[i].style.display = "none";
+				}
+			}
+			
+		</script>
+		<script>
+		window.onload=function(){
+			 //先获取html的元素
+			document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+			//resize 事件 当用户企图改变浏览器窗口大小的时候 被触发
+			window.addEventListener("resize",function(){
+				document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+			},false);
+		};
+	</script>
+	</body>
+</html>

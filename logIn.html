@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style>
+			html{
+				font-size: 100px;
+			}
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			body{
+			    font-family: Droid Sans, Droid Sans Fallback, STHeiti, SimHei, Hei;
+			    word-wrap: break-word;
+			    line-height: 1;
+			    min-width: 320px;
+			    background-color: #F6F6F6;
+			    margin: 0 auto;
+			    color: rgba(0, 0, 0, 0.85);
+			  
+			}
+			h2{
+				text-align: center;
+			    margin: 35px 26px 13px ;
+			    font-size: 0.22rem;
+			    font-weight: bold;
+			}
+			.logimg{
+				width: 100%;
+				margin: 0.22rem auto 0.09rem;
+				text-align: center;
+			}
+			.logimg img{
+				width: 1.63rem;
+				height: 1.21rem;
+			}
+			.detail{
+				width: 2.68rem;
+				font-size: 0.14rem;
+				line-height: 0.17rem;
+				margin: 0.29rem auto 0.18rem;
+			}
+			.container{
+				width: 100%;
+				font-size: 0.16rem;
+			}
+			.box{
+				width: 100%;
+			}
+			.box .dinput{
+				width:3rem;
+				height: 0.44rem;
+				padding:0 0.13rem;
+				border:1px solid gray;
+				border-radius: 0.12rem;
+				box-sizing: border-box;
+				margin:0.08rem 0.1rem;
+				background-color:white;
+			}
+			.dinput input{
+				width: 2.38rem;
+				height: 0.4rem;
+				border:none;
+				padding: 0.01rem;
+				outline: none;
+			}
+			.dinput img{
+				width: 0.19rem;
+				height: 0.15rem;
+			}
+			.vertCode{
+				width: 100%;
+				display: flex;
+				align-items: center;
+			}
+			.code{
+				width: 1.21rem;
+				height: 0.42rem;
+				padding:0 0.13rem;
+				border:1px solid gray;
+				border-radius: 0.12rem;
+				box-sizing: border-box;
+				margin-left: 0.1rem;
+				background-color: white;
+				position: relative;
+			}
+			.code input {
+				width: 0.8rem;
+				height: 0.4rem;
+				border:none;
+				outline: none;
+			}
+			.code .codeRight,.codeWrong{
+				width: auto;
+				font-size: 0.1rem;
+				line-height: 0.16rem;
+				border:1px solid gray;
+				border-radius: 0.05rem;
+				position: relative;
+				display: none;
+				text-align: center;
+			}
+			.codeWrong{
+				width: 1.8rem;
+			}
+			.code .codeRight::before,.codeWrong::before{
+				content:"";
+				width: 0px;
+				height: 0px;
+				border:6px solid transparent;
+				border-bottom-color: gray;
+				position: absolute;
+				left: 0.1rem;
+				top:-0.12rem
+				
+			}
+			.vertCode .codeArea{
+				width: 1.2rem;
+				height: 0.6rem;
+				line-height: 0.6rem;
+				font-size: 0.4rem;
+				text-align: center;
+				word-spacing: 0.16rem;
+				text-decoration: line-through;
+				text-line-through-color: #FFFFFF;
+				text-line-through-width: thick;
+			}
+			.vertCode .codeImg{
+				width: 0.18rem;
+				height: 0.18rem;
+				align-self: flex-end;
+			}
+			.tick{
+				width: 100%;
+				height: 0.2rem;
+				margin-top:0.15rem;
+				padding-bottom: 0.23rem;
+				font-size: 0.12rem;
+				display: flex;
+				align-items: center;
+			}
+			.tick img{
+				width: 0.2rem;
+				height: 0.2rem;
+				margin:  0 0.1rem;
+			}
+			
+			.tick a{
+				text-decoration: none;
+				position: absolute;
+				right: 0.15rem;
+				color: #2cc1c7;
+			}
+			.btn-logIn{
+				width: 2.88rem;
+				padding:0.12rem 0;
+				margin-bottom: 0.09rem;
+				border:1px solid gray;
+				border-radius: 0.12rem;
+				text-align: center;
+				margin: 0 auto 0.09rem;
+			}
+			.register{
+				width: 100%;
+				text-align: center;
+			    color: #2cc1c7;
+			    cursor: pointer;
+			}
+			.thirdAcount{
+				margin:0.15rem auto 0.05rem;
+				text-align: center;
+			}
+			.thirdAcount img{
+				width: 0.3rem;
+				height: 0.3rem;
+				padding-right: 0.3rem;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h2 class="title">欢迎登陆华为账号</h2>
+		<div class="logimg">
+			<img src="img/login.png" alt="" />
+		</div>
+		<p class="detail">
+			华为帐号是您用于访问所有华为服务的帐号。使用华为帐号登录后，您将可以使用云服务、华为商城、花粉俱乐部、应用市场、EMUI产品、华为网盘和开发者联盟。
+		</p>
+		<div class="container">
+			<div class="box">
+				<div class="dinput">
+					<input type="text" placeholder="华为账号(手机/邮箱)"/>
+				</div>
+				<div class="dinput">
+					<input type="text" placeholder="请输入密码" />
+					<img src="img/eye.png" alt="" />
+				</div>
+				<div class="vertCode">
+					<div class="code">
+						<input type="text" placeholder="验证码"/>
+						<div class="codeRight">验证码正确</div>
+						<div class="codeWrong">您输入的验证码错误，请重试！</div>
+					</div> 
+					<div class="codeArea"></div>
+					<img src="img/refresh.png" alt="" class="codeImg"/>
+				</div>
+				
+				<div class="tick">
+					<img src="img/tick-off.png" alt="" />
+					<span>记住账号</span>
+					<a href="#">忘记密码?</a>
+				</div>
+				<div class="btn-logIn">
+					<span>登录</span>
+				</div>
+				<div class="register"><span>免费注册</span></div>
+				<div class="thirdAcount">
+					<a href=""></a>
+				</div>
+				
+				<div class="thirdAcount">
+					<a href=""><img src="img/wap_qq.png" alt="" /></a>
+					<a href=""><img src="img/wap_alipay.png" alt="" /></a>
+					<a href=""><img src="img/wap_weixin.png" alt="" /></a>
+					
+				</div>
+			</div> 
+		</div>
+		
+		<script>
+		
+		//记住账号图片切换
+			var tickimg = document.querySelector(".tick img");
+			var flage = false;
+			tickimg.onclick =function(){
+				if(!flage){
+					this.src = "img/tick-on.png" ;
+					flage = true;
+				}else{
+					this.src = "img/tick-off.png";
+					flage = false;
+				}
+			}
+			
+		//生成随机验证码
+			var codeArea = document.querySelector(".codeArea");
+			codeArea.innerHTML= creatCode();
+			function creatCode(){
+				var str ="";
+				for(var i= 0;i<4;i++){
+					if(i!=1){
+						var num = parseInt(Math.random()*26+65);
+						str +=String.fromCharCode(num);
+					}else{
+						str +=parseInt(Math.random()*9+1);
+					}
+				}
+				return str;
+			}
+			
+		//点击刷新，重新生成验证码
+			var codeImg = document.querySelector(".codeImg");
+			codeImg.onclick = function(){
+				codeArea.innerHTML= creatCode();
+			}
+		//判断验证码输入是否正确
+			var codeInput = document.querySelector(".code input");
+			codeInput.onblur =function(){
+				var str = this.value.toUpperCase();
+				console.log(str)
+				if(str === codeArea.innerHTML){
+					var codeRight = document.querySelector(".codeRight");
+					codeRight.style.display = "block";
+					codeRight.style.color ="lightgreen";
+					console.log(1)
+					setTimeout(function(){
+						codeRight.style.display = "none";
+					},2000)
+				}else{
+					console.log(2)
+					var codeWrong= document.querySelector(".codeWrong");
+					console.log(codeWrong);
+					codeWrong.style.display = "block";
+					codeWrong.style.color ="red";
+					setTimeout(function(){
+						codeWrong.style.display = "none";
+					},2000)
+					
+				}
+			}
+			
+			
+		</script>
+		<script>
+			window.onload=function(){
+				 //先获取html的元素
+				document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+				//resize 事件 当用户企图改变浏览器窗口大小的时候 被触发
+				window.addEventListener("resize",function(){
+					document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+				},false);
+			};
+		</script>
+		
+	</body>
+</html>

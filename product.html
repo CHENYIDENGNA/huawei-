@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style type="text/css">
+			html{
+				font-size: 100px;
+			}
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			body{
+			    font-family: sans-serif,Helvetica,Arial,'Lucida Grande',Verdana;
+			    word-wrap: break-word;
+			    line-height: 1;
+			    min-width: 320px;
+			    background-color: #f7f7f7;
+			    max-width: 720px;
+			    margin: 0 auto;
+			    color: #333;
+			}
+			header{
+				width: 100%;
+				height: 0.42rem;
+				font-size: 0.12rem;
+				border-bottom: 1px solid #c7c7c7;
+				background-color:#eee;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 10;
+				display: flex;
+				align-items: center;
+			}
+			header a{
+				text-decoration: none;
+				display:block;
+				width: 0.40rem;
+				height: 0.42rem;
+				line-height: 0.42rem;
+				font-size: 0.35rem;
+				color: black;
+				text-align: center;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			header p{
+				width: 1.44rem;
+				height: 0.42rem;
+				line-height: 0.42rem;
+				text-align: center;
+				font-size: 0.14rem;
+				margin: 0 auto;
+			}
+			.homepage{
+				width: 0.21rem;
+				height: 0.21rem;
+				position: absolute;
+				right: 0.5rem;
+			}
+			.homepage img{
+				width: 0.21rem;
+				height: 0.21rem;
+			}
+			header .shopingCart{
+				display: block;
+				width: 0.21rem;
+				height: 0.21rem;
+				position: absolute;
+				right: 0.1rem;
+				top:0.1rem;
+			}
+			header .shopingCart img{
+				width: 0.21rem;
+				height: 0.21rem;
+			}
+			header .shopingCart .count{
+				width:0px;
+				height: 0px;
+				border-radius: 0.06rem;
+				border:0.06rem solid red;
+				text-align: center;
+				position: absolute;
+				top: 0;
+				left: 0.06rem;
+			}
+			header .shopingCart .count span{
+				display: block;
+				width: 0.06rem;
+				height: 0.06rem;
+				color: white;
+				position: absolute;
+				top: -0.06rem;
+				left: -0.02rem;
+			}
+			.none{
+				width: 100%;
+				height: 0.42rem;
+			}
+			nav{
+				width: 100%;
+				background-color: #eee;
+				font-size: 0.12rem;
+			}
+			nav:after{
+				display: block;
+				clear: both;
+				content: "";
+			}
+			nav ul{
+				height: 100%;
+			}
+			nav ul li{
+				display: inline-block;
+				list-style: none;
+				width: 25%;
+				height: 0.37rem;
+				float: left;
+				text-align: center;
+			}
+			nav ul li a{
+				height: 0.37rem;
+				line-height: 0.37rem;
+				text-decoration: none;
+				color: black;
+				font-size: 0.15rem;
+			}
+			nav li.action{
+				border-bottom: 0.02rem solid red;
+			}
+			.slider{
+				width: 100%;
+				height: 1.71rem;
+				text-align: center;
+				background-color:white;
+				position: relative;
+				margin-bottom: 0.1rem;
+			}
+			.slider img{
+				width: 1.71rem;
+				height: 1.71rem;
+				margin: 0 auto;
+			}
+			.slider p{
+				font-size: 0.16rem;
+				position: absolute;
+				right: 0.1rem;
+				bottom:0.2rem
+			}
+			.slider p span:first-child{
+				font-size: 0.24rem;
+			}
+			.slider p span:last-child{
+				font-size: 0.16rem;
+			}
+			.producteDetail{
+				width: 100%;
+				background-color:#FFFFFF;
+				margin-bottom: 0.15rem;
+			}
+			.description{
+				width: 100%;
+			}
+			.description p{
+				width: 3.1rem;
+				margin: 0 auto;
+			}
+			.description p:nth-child(1){
+				font-size: 0.14rem;
+			}
+			.description p:nth-child(2){
+				font-size: 0.12rem;
+				margin-top: 0.05rem;
+			}
+			.description p:nth-child(3){
+				font-size: 0.12rem;
+			}
+			.description p:nth-child(3) a{
+				text-decoration: none;
+				color: #28c0c6;
+			}
+			.description p:nth-child(4){
+				font-size: 0.14rem;
+				color: red;
+				margin-top:0.1rem;
+			}
+			.acce{
+				width: 100%;
+				font-size: 0.12rem;
+				display: flex;
+				align-items: center;
+				margin-top: 0.1rem;
+			}
+			.acce span{
+				display: block;
+				width: 0.38rem;
+				text-align: center;
+			}
+			.acce img{
+				width: 0.53rem;
+				height: 0.53rem;
+				border:1px solid lightgray;
+			}
+			.other p{
+				padding: 0.1rem 0 0.1rem 0.1rem;
+				font-size: 0.12rem;
+			}
+			.buyIfo{
+				width: 100%;
+				font-size: 0.12rem;
+				margin-bottom: 0.2rem;
+				background-color: #fff;
+			}
+			
+			.buyIfo .number input{
+				width: 0.46rem;
+				margin:0.072rem 0;
+				padding:0 0.1rem;
+				border:none
+			}
+			.buyIfo>div{
+				margin: 0.15rem 0 0.02rem 0.1rem;
+				display: flex;
+				align-items: center;
+			}
+			.number div{
+				width: 0.66rem;
+				border:1px solid darkgray;
+				border-radius: 0.08rem;
+			}
+			.color div,.type div ,.capacity div ,.combo div{
+				width: 0.97rem;
+				height: 0.3rem;
+				line-height: 0.3rem;
+				text-align: center;
+				border:1px solid darkgray;
+				border-radius: 0.08rem;
+				margin-right: 0.1rem;
+			}
+			.type div ,.capacity div ,.combo div{
+				width: 0.63rem;
+				color:#f03f01;
+				border-color: #f03f01;
+    			background-color: #fef5f2;
+			}
+			
+			.bottom{
+				width: 100%;
+				padding:0.16rem 0 ;
+				margin:0.16rem 0 0.91rem 0;
+				background-color: #fff;
+				
+			}
+			.bottom p{
+				font-size: 0.12rem;
+				width: 100%;
+				text-align: center;
+			}
+			.bottom a{
+				text-decoration: none;
+				color: black;
+			}
+			.bottom .bottom-first a {
+				padding: 0.036rem 0.144rem;
+			}
+			.bottom .bottom-second{
+				padding:0.1rem 0;
+			}
+			.bottom .bottom-second a{
+				border-right: 1px solid gray;
+				padding:0 0.144rem;
+			}
+			.bottom .bottom-second a:first-child{
+				color: red;
+			}
+			.buyBtn{
+				width: 100%;
+				font-size: 0.12rem;
+				padding:0.1rem 0;
+				border-top:1px solid lightgray;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				z-index: 10;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+			.buyBtn div{
+				width: 1.38rem;
+				height: 0.38rem;
+				line-height: 0.38rem;
+				text-align: center;
+				border-radius: 0.12rem;
+				/*background-color: #ca151e;
+    			border: 1px solid #cc0a0d;*/
+    			color: #fff
+			}
+			.buyBtn div:first-child{
+				background-color: #f17f00;
+    			border: 1px solid #d75e0c;
+			}
+			.buyBtn div:last-child{
+				background-color: #ca151e;
+    			border: 1px solid #cc0a0d;
+			}
+			.buyBtn div a{
+				text-decoration: none;
+				color: white;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<header>
+			<a href="homepage.html"><</a>
+			<p>商品详情</p>
+			<div class="shoppingcart">
+				<ul></ul>
+			</div>
+			<div class="homepage"><a href="homepage.html"><img src="img/icon_home.png" alt="" /></a></div>
+			<div class="shopingCart">
+				<img src="img/icon_shoppingCart.png" alt="" />
+				<div class="count"><span>0</span></div>
+			</div>
+		</header>
+		<div class="none"></div>
+		<nav class="produceNav">
+			<ul class="">
+				<li class="action"><a href="">基本信息</a></li>
+				<li><a href="">图文详情</a></li>
+				<li><a href="">参数/售后</a></li>
+				<li><a href="">评价</a></li>
+			</ul>
+		</nav>
+		<div class="slider">
+			<img src="" alt="" class="sliderImg"/>
+			<p><span class="count1"></span><span class="count2"></span></p>
+		</div>	
+		<div class="producteDetail">
+			<div class="description">
+				<p>HUAWEI nova 4GB+64GB 全网通版 香槟金（白）</p>
+				<p>一指美拍，十级美颜，4K高清拍摄，开启“玩”美时代~</p>
+				<p><a href="">10月14日-23日购机用户，赠送移动电源；限量随机赠送欧莱雅美妆套装，数量有限，先到先得。实名认证用户前往实名专场购买，可获赠移动电源及100元花币卡，抽3000元旅游券~</a></p>
+				<p>¥2399.00</p>
+			</div>
+			<div class="acce">
+				<span>配:</span>
+				<a href=""><img src="img/acce.jpg" alt="" /></a>
+			</div>
+			<div class="other">
+				<p>以旧换新：旧手机最高抵5000元 立即参与></p>			
+			</div>
+		</div>
+		<div class="buyIfo">
+			<div class="number">
+				<span>数量：</span>
+				<div><input type="text" value="0"/></div>
+			</div>
+			<div class="color">
+				<span>颜色：</span>
+				<div><span>香槟金（黑）</span></div>
+				<div><span>香槟金（白）</span></div>
+			</div>
+			<div class="type">
+				<span>制式：</span>
+				<div><span>全网通版</span></div>
+			</div>
+			<div class="capacity">
+				<span>容量：</span>
+				<div><span>4GB+64GB</span></div>
+			</div>
+			<div class="combo">
+				<span>套餐：</span>
+				<div><span>官方标配</span></div>
+			</div>
+		</div>
+		
+		<div class="bottom">
+			<p class="bottom-first">
+				<a href="">登录</a>
+				<a href="">反馈</a>
+			</p>
+			<p class="bottom-second">
+				<a href="">触屏版</a>
+				<a href="">电脑版</a>
+				<a href="">客户端</a>
+			</p>
+			<p class ="bottom-third">Copyright © 2011-2016</p>
+		</div>
+		
+		<div class="buyBtn">
+			<div><a href="">加入购物车</a></div>
+			<div><a href="">立即下单</a></div>
+		</div>
+		<script>
+		//菜单栏事件
+		
+			var oLi = document.getElementsByTagName("li");
+			console.log(oLi)
+			for(var i =0;i<oLi.length;i++){
+				oLi[i].onclick = function(e){
+					e.preventDefault();
+					clearClass();
+					this.setAttribute("class","action");
+				}
+			}
+			
+			//清除所有样式
+			function clearClass(){
+				for(var i=0;i<oLi.length;i++){
+					oLi[i].removeAttribute("class");
+				}
+			}
+			
+			//轮播图
+			var sliderImg = document.querySelector(".sliderImg");
+			var count1 = document.querySelector(".count1");
+			var count2 = document.querySelector(".count2");
+			var arrImg = ["img/producte-slider1.jpg","img/producte-slider2.jpg","img/producte-slider3.jpg"]
+			var timer;
+			var num=0;
+	
+			sliderPic();
+			timer =setInterval(function(){
+				sliderPic();
+			},1500)
+			
+			function sliderPic(){
+					sliderImg.src =arrImg[num];
+					num++;
+					count1.innerHTML = num;
+					count2.innerHTML = "/"+arrImg.length;
+					num %=arrImg.length;	
+			}
+			
+		</script>
+		<script>
+			window.onload=function(){
+				 //先获取html的元素
+				document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+				//resize 事件 当用户企图改变浏览器窗口大小的时候 被触发
+				window.addEventListener("resize",function(){
+					document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+				},false);
+			};
+		</script>
+	</body>
+</html>

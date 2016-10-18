@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>华为商场官网</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<style>
+			html{
+				font-size: 100px;
+			}
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			body{
+				font-family:sans-serif,Helvetica,Arial,'Lucida Grande',Verdana;
+			}
+			.container{
+				width: 100%;
+				height: 0.35rem;
+				position: fixed;
+				background-color: white;
+				z-index: 100;
+				/*display: flex;
+				justify-content: space-between;
+				align-items: center;*/
+				
+			}
+			.container .logo{
+				width: 0.7rem;
+				height: 0.35rem;
+				float: left;
+			}
+			.container input{
+				width: 1.6rem;
+				height: 0.25rem;
+				border-radius: 0.1rem;
+				background-color: #f7f7f7;
+				border:none;
+				margin-top:0.05rem;
+				margin-left: 0.1rem;
+				float: left;
+			}
+			.container div{
+				width: auto;
+				height: 100%;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+			.container .shoppingCart{
+				width: 0.21rem;
+				height: 0.21rem;
+				
+			}
+			.container .logoIn{
+				display:inline-block;
+				font-size: 0.16rem;
+				height: 0.35rem;
+				line-height: 0.35rem;
+			}
+			.none{
+				width: 100%;
+				height: 0.35rem;
+				background: white;
+			}
+			.slider{
+				width: 100%;
+				height: 1.35rem;
+			}
+			.slider .sliderPic{
+				width: 100%;
+				height: 100%;
+			}
+			.phoneZone{
+				width: 100%;
+				font-size: 0.12rem;
+			}
+			.phoneZone div:after{
+				display: block;
+				clear: both;
+				content: "";
+			}
+			.phoneZone div div{
+				display: block;
+				width: 25%;
+				border-right: 1px solid #f7f7f7;
+			    border-bottom: 1px solid #f7f7f7;
+			    margin-bottom: -1px;
+				box-sizing: border-box;
+				text-align: center;
+				float: left;
+			}
+			.phoneZone div div a{
+				display: block;
+				text-decoration: none;
+				padding-top: 0.08rem;
+			}
+			.p-name ,.p-price{
+				width: 0.68rem;
+				height: 0.16rem;
+				text-align: center;	
+				margin: 0 auto;
+				text-overflow: ellipsis;
+			    white-space: nowrap;
+			    overflow: hidden;
+			}
+			.p-name{
+				color: black;
+			}
+			.p-price{
+				color: darkgray;
+			}
+			.p-img{
+				padding-top:0.09rem;
+				padding-bottom: 0.09rem;
+			}
+			.p-img img{
+				width: 0.6rem;
+				height: 0.6rem;
+			}
+			.quciklink{
+				width: 100%;
+				/*height: 0.68rem;*/
+				font-size: 0.14rem;
+				background-color: #fff;
+				overflow: hidden;
+				zoom: 1;
+			}
+			.quciklink div{
+				display: block;
+				width: 20%;
+				text-align: center;
+				float:left;
+			}
+			.quciklink div a{
+				width: 0.56rem;
+				display: block;
+				text-decoration: none;
+				color: black;
+				margin:0 auto;
+				padding: 0.07rem 0;
+			}
+			.quciklink .linkPic{
+				width: 0.35rem;
+				height: 0.35rem;
+			}
+			.quciklink .linkname{
+				margin: 0 auto;
+				text-align: center;
+			}
+			.notice{
+				width: 100%;
+				height: 0.36rem;
+				 font-size: 0.14rem;
+				 display: flex;
+				 align-items: center;
+				 border-top:1px solid #eee;
+			}
+			.notice div:first-child{
+				width: 15%;
+				height: 100%;
+				float: left;
+			}
+			.notice div:first-child a{
+				display: block;
+				width: ;
+				height: 0.36rem;
+				line-height: 0.36rem;
+			    font-weight: 700; 
+			    text-decoration: none;
+			    text-align: center;
+			    color: black;
+			}
+			.notice .swiper-container{
+				width: 75%;
+				float: left;
+				display: flex;
+				justify-content: center;
+			}
+			.notice .swiper-container ul{
+				list-style: none;
+				width: 2.35rem;
+				height: 100%;
+				float: left;
+				margin-left: 0.3rem;
+			}
+			.notice ul li a{
+				display: block;
+			    overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			    color: #888;
+			    text-decoration: none;
+			}
+			
+			.mobil-phone,{
+				width: 100%;
+				
+			}
+			.mobil-phone:after{
+				display: block;
+				clear: both;
+				content: "";
+			}
+			.mobil-phone h3,.netbook-tabletPc h3{
+				width: 100%;
+				height: 0.28rem;
+				line-height: 0.28rem;
+				font-size: 0.14rem;
+				display: inline-block;
+			    color: #888;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			    background-color: #f7f7f7;
+			   float: left;
+			   text-align: center;
+			}
+			.mobil-phone-list{
+				width: 100%;
+				font-size: 0.12rem;
+			}
+			.list-container {
+				display: block;
+				width: 33.3%;
+				border-right: 1px solid #f7f7f7;
+			    border-bottom: 1px solid #f7f7f7;
+			    margin-bottom: -1px;
+				box-sizing: border-box;
+				text-align: center;
+				margin-top:0.15rem ;
+				float: left;
+				position:relative;
+			}
+			.mobil-phone-list img:first-child{
+				width: 0.64rem;
+				height: 0.64rem;
+			}
+			.mobil-phone-list img:last-child{
+				width: 0.21rem;
+				height: 0.21rem;
+				position: absolute;
+				top:0px;
+				left:0.1rem;
+			}
+			.phone-name,.phone-promotion,.phone-price,.net-name,.net-price,.net-promotion{
+				/*width: 0.68rem;*/
+				height: 0.16rem;
+				text-align: center;	
+				margin: 0 auto;
+				text-overflow: ellipsis;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    padding-top:0.03rem;
+			}
+			.phone-name,.phone-promotion,.phone-price{
+				width: 0.68rem;
+			}
+			.phone-price,.net-price{
+				color:red;
+			}
+			
+			.netbook-tabletPc{
+				width: 100%;
+				font-size: 0.12rem;
+			}
+			.netbook-tabletPc .list-container{
+				width: 50%;
+			}
+			.ad img{
+				width: 100%;
+				height: 0.7rem;
+			}
+			.netbook-tabletPc .list-container img:first-child{
+				width: 0.85rem;
+				height: 0.85rem;
+			}
+			.netbook-tabletPc .list-container img:last-child{
+				width: 0.21rem;
+				height: 0.21rem;
+				position: absolute;
+				top:0.05rem;
+				left: 0.2rem;
+			}
+			.net-name,.net-price,.net-promotion{
+				width:1.3rem;
+			}
+			.totop{
+				position: fixed;
+				right: 0.1rem;
+				bottom: 0.5rem;
+				z-index: 999;
+			}
+			.returntop{
+				width: 0px;
+				height: 0px;
+				border-radius: 0.16rem;
+				border:0.16rem solid gray;
+				
+			}
+			.totop span{
+				display: inline-block;
+				width: 0.16rem;
+				height: 0.16rem;
+				background:url(img/up.png) no-repeat;
+				position: absolute;
+				top:0.06rem;
+				left: 0.08rem;
+			}
+			.foot{
+				width: 100%;
+				height: 0.5rem;
+				font-size: 0.14rem;
+				position: fixed;
+				left: 0;
+				bottom:0 ;
+				z-index: 10;
+				background-color:white;
+				
+			}
+			.foot li{
+				list-style: none;
+				width: 20%;
+				float: left;
+			}
+			.foot a {
+				display: block;
+				text-decoration: none;
+				color:black;
+				text-align: center;
+				padding-top:0.04rem;
+			}
+			.foot span{
+				display:inline-block;
+				width: 100%;
+				height: 0.24rem;
+				line-height: 0.24rem;
+			}
+			.foot li a:before{
+				content: '';
+			    height: 0.21rem;
+			    width: 0.21rem;
+			    display: block;
+			    margin: 0 auto;
+			    background: url(img/foot.png) no-repeat;
+			   	background-size: auto 0.40rem;
+			    background-position: 0 0.01rem;
+			}
+			
+			.foot li:nth-child(1) a:before{
+				background-position:0 -0.20rem ;
+			}
+			.foot li:nth-child(1) span{
+				color: red;
+			}
+			.foot li:nth-child(2) a:before{
+				background-position:-0.2rem 0.01rem ;
+			}
+			.foot li:nth-child(3) a:before{
+				background-position:-0.4rem 0.01rem ;
+			}
+			.foot li:nth-child(4) a:before{
+				background-position:-0.6rem 0.01rem ;
+			}
+			.foot li:nth-child(5) a:before{
+				background-position:-0.8rem 0.01rem ;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<img src="img/logo1.png" alt="华为商场" class="logo"/>
+			<input type="text" placeholder="搜索"/>
+			<div>
+				<img src="img/icon_shoppingCart.png" alt="" class="shoppingCart"/>
+				<span class="logoIn">登录</span>
+			</div>
+		</div>
+		<div class="none"></div>
+		<div class="slider">
+			<img src="" class="sliderPic"/>
+			<ul class="sliderUl"></ul>
+		</div>
+		<div class="phoneZone">
+			<div>
+				<div>
+					<a href="product.html">
+						<p class="p-name">HUAWEI nova</p>
+						<p class="p-price">2399元</p>
+						<p class="p-img"><img src="img/p-img1.jpg" alt="" /></p>
+					</a>
+				</div>
+				<div>
+					<a href="#">
+						<p class="p-name">荣耀8</p>
+						<p class="p-price">1998元起</p>
+						<p class="p-img"><img src="img/p-img2.jpg" alt="" /></p>
+					</a>
+				</div>
+				<div>
+					<a href="#">
+						<p class="p-name">HUAWEI p9</p>
+						<p class="p-price">2988元起</p>
+						<p class="p-img"><img src="img/p-img3.jpg" alt="" /></p>
+					</a>
+				</div>
+				<div>
+					<a href="#">
+						<p class="p-name">荣耀畅玩5c</p>
+						<p class="p-price">899元起</p>
+						<p class="p-img"><img src="img/p-img4.jpg" alt="" /></p>
+					</a>
+				</div>
+			</div>
+			<div>
+				<div>
+					<a href="#">
+						<p class="p-name">荣耀V8</p>
+						<p class="p-price">2299元起</p>
+						<p class="p-img"><img src="img/p-img4.jpg" alt="荣耀V8" /></p>
+					</a>
+				</div>
+				<div>
+					<a href="#">
+						<p class="p-name">荣耀 note8</p>
+						<p class="p-price">2299元起</p>
+						<p class="p-img"><img src="img/p-img5.jpg" alt="" /></p>
+					</a>
+				</div>
+				<div>
+					<a href="#">
+						<p class="p-name">Mate 8</p>
+						<p class="p-price">2699元起</p>
+						<p class="p-img"><img src="img/p-img6.jpg" alt="" /></p>
+					</a>
+				</div>
+				<div>
+					<a href="#">
+						<p class="p-name">荣耀盒子  Voice</p>
+						<p class="p-price">258元起</p>
+						<p class="p-img"><img src="img/p-img7.jpg" alt="" /></p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="quciklink">
+			<div class="link">
+				<a href="#">
+					<img src="img/icon1.png"/ class="linkPic">
+					<p class="linkname">实名特权</p>
+				</a>
+			</div><div class="link">
+				<a href="#">
+					<img src="img/icon2.png"/ class="linkPic">
+					<p class="linkname">以旧换新</p>
+				</a>
+			</div>
+			<div class="link">
+				<a href="#">
+					<img src="img/icon3.png"/ class="linkPic">
+					<p class="linkname">手机导购</p>
+				</a>
+			</div>
+			<div class="link">
+				<a href="#">
+					<img src="img/icon4.png"/ class="linkPic">
+					<p class="linkname">优购码</p>
+				</a>
+			</div>
+			<div class="link">
+				<a href="#">
+					<img src="img/icon5.png"/ class="linkPic">
+					<p class="linkname">移动端特惠</p>
+				</a>
+			</div>
+			
+		</div>
+		<div class="notice">
+			<div><a href="#">公告</a></div>
+			<div class="swiper-container">
+				<i><img src="img/notice.png" alt="" /></i>
+				<ul>
+					<li><a href="#">华为商城升级公告</a></li>
+					<!--<li><a href="#">华为note心动首发</a></li>
+					<li><a href="#">假冒华为商城声明</a></li>
+					<li><a href="#">荣耀8购机秘诀</a></li>-->
+				</ul>
+			</div>
+		</div>
+		<div class="mobil-phone">
+			<h3>— 手机 —</h3>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone1.jpg" alt="荣耀8" />
+					<p class="phone-name">荣耀8</p>
+					<p class="phone-promotion">倾情首发</p>
+					<p class="phone-price">￥ 2299</p>
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone2.jpg" alt="华为P9 plus" />
+					<p class="phone-name">HUIWEI P9 Plus</p>
+					<p class="phone-promotion">一上手 就爱不释手</p>
+					<p class="phone-price">￥ 3988</p>
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone3.jpg" alt="荣耀7i" />
+					<p class="phone-name">荣耀7i</p>
+					<p class="phone-promotion">赠耳机+数据线</p>
+					<p class="phone-price">￥ 1499</p>
+					<img src="img/mz.png" alt="" />
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone4.jpg" alt="荣耀7晨曦金" />
+					<p class="phone-name">荣耀7晨曦金</p>
+					<p class="phone-promotion">原价1500 直降200</p>
+					<p class="phone-price">￥ 1399</p>
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone5.jpg" alt="荣耀畅玩5G" />
+					<p class="phone-name">荣耀畅玩5G</p>
+					<p class="phone-promotion">青春好拍档</p>
+					<p class="phone-price">￥ 699</p>
+					<img src="img/rm.png" alt="" />
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone6.jpg" alt="荣耀畅玩5X" />
+					<p class="phone-name">荣耀畅玩5X</p>
+					<p class="phone-promotion">全网通 直降300</p>
+					<p class="phone-price">￥ 1099</p>
+					<img src="img/rm.png" alt="" />
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone7.jpg" alt="G9 青春版" />
+					<p class="phone-name">G9 青春版</p>
+					<p class="phone-promotion">直降300</p>
+					<p class="phone-price">￥ 1599</p>
+					<img src="img/rm.png" alt="" />
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone8.jpg" alt="HUWWEI G9 plus" />
+					<p class="phone-name">HUWWEI G9 plus</p>
+					<p class="phone-promotion">赠超值好礼</p>
+					<p class="phone-price">￥ 2399</p>
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone9.jpg" alt="荣耀畅玩5" />
+					<p class="phone-name">荣耀畅玩5</p>
+					<p class="phone-promotion">惊艳小屏</p>
+					<p class="phone-price">￥ 599</p>
+					<img src="img/rm.png" alt="" />
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone10.jpg" alt="HUIWEI 麦芒5" />
+					<p class="phone-name">HUIWEI 麦芒5</p>
+					<p class="phone-promotion">年轻 不畏什么</p>
+					<p class="phone-price">￥ 2399</p>
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone11.jpg" alt="荣耀7 电信4G版" />
+					<p class="phone-name">荣耀7 电信4G版</p>
+					<p class="phone-promotion">原价1599 直降300元</p>
+					<p class="phone-price">￥ 1299</p>
+				</div>
+			</div>
+			<div class="mobil-phone-list">
+				<div class="list-container">
+					<img src="img/mobil-phone12.jpg" alt="HUIWEI 畅想5s" />
+					<p class="phone-name">HUIWEI 畅想5s</p>
+					<p class="phone-promotion">轻薄金属机身</p>
+					<p class="phone-price">￥ 1099</p>
+				</div>
+			</div>
+		</div>
+		<div class="netbook-tabletPc">
+			<h3>- 平板&笔记本</h3>
+			<div class="ad"><a href="#"><img src="img/ad.jpg" alt="" /></a></div>
+			<div class="list-container">
+				<img src="img/net1.jpg" alt="华为 M2 8英寸 平板电脑" />
+				<p class="net-name">华为 M2 8英寸 平板电脑</p>
+				<p class="net-promotion">清晰视界 让声音鲜活起来</p>
+				<p class="net-price">￥ 1888</p>
+				<img src="img/xp.png" alt="" />
+			</div>
+			<div class="list-container">
+				<img src="img/net2.jpg" alt="荣耀平板2" />
+				<p class="net-name">荣耀平板2</p>
+				<p class="net-promotion">10元订金盲约赠原装保护套</p>
+				<p class="net-price"></p>
+				<img src="img/sf.png" alt="" />
+			</div>
+			<div class="list-container">
+				<img src="img/net3.jpg" alt="华为 M2 8英寸 平板电脑" />
+				<p class="net-name">华为 M2 8英寸 平板电脑</p>
+				<p class="net-promotion">哈曼卡顿音效 麒麟930</p>
+				<p class="net-price">￥ 1588</p>
+				<img src="img/sf.png" alt="" />
+			</div>
+			<div class="list-container">
+				<img src="img/net4.jpg" alt="荣耀X2" />
+				<p class="net-name">荣耀X2</p>
+				<p class="net-promotion">金属材质 紧凑设计</p>
+				<p class="net-price">￥ 1399</p>
+			</div>
+			<div class="list-container">
+				<img src="img/net5.jpg" alt="荣耀畅玩平板note" />
+				<p class="net-name">荣耀畅玩平板note</p>
+				<p class="net-promotion">9.6英寸IPS高清屏幕</p>
+				<p class="net-price">￥ 1199</p>
+			</div>
+			<div class="list-container">
+				<img src="img/net6.jpg" alt="华为 M2 青春版 7英寸" />
+				<p class="net-name">华为 M2 青春版 7英寸</p>
+				<p class="net-promotion">高清大屏 侧边指纹</p>
+				<p class="net-price">￥ 1599</p>
+			</div>
+			<div class="list-container">
+				<img src="img/net7.jpg" alt="华为 M2 青春版 10.1英寸" />
+				<p class="net-name">华为 M2 青春版 10.1英寸</p>
+				<p class="net-promotion">出色续航 纯净音质</p>
+				<p class="net-price">￥ 1899</p>
+			</div>
+			<div class="list-container">
+				<img src="img/net8.jpg" alt="荣耀平板" />
+				<p class="net-name">荣耀平板</p>
+				<p class="net-promotion">大容量电池强续航</p>
+				<p class="net-price">￥ 999</p>
+			</div>
+		</div>
+		<div class="totop">
+			<a href="">
+				<div class="returntop"></div>
+				<span></span>
+			</a>
+		</div>
+		<div class="foot">
+			<ul>
+				<li><a href="homepage.html"><span>首页</span></a></li>
+				<li><a href="HUIWEI.html"><span>华为</span></a></li>
+				<li><a href="honour.html"><span>荣耀</span></a></li>
+				<li><a href="classification.html"><span>分类</span></a></li>
+				<li><a href="myHUAWEI.html"><span>我的</span></a></li>
+			</ul>
+		</div>
+		
+		
+	<script>
+		//轮播图
+		var arrPic = ["img/sliderPic1.png","img/sliderPic2.png","img/sliderPic3.png"];
+		var sliderPic = document.querySelector(".sliderPic");
+		//sliderPic.src = arrPic[0];
+		var sliderUl = document.querySelector(".sliderPic");
+		var timer;
+		var num=0;
+		
+		//动态创建li
+		/*for(var i=0;i<arrPic.length;i++){
+			var oDiv = document.createElement("div");
+			oDiv.innerHTML ="123"
+			var oLi = document.createElement("li");
+			oLi.appendChild(oDiv);
+			sliderUl.appendChild(oLi);
+		}*/
+		slider();
+		timer =setInterval(function(){
+			slider();
+		},1500);
+		function slider(){
+				sliderPic.src = arrPic[num]
+				num++;
+				num %= arrPic.length;
+		};
+		
+		$(".sliderPic").bind("swipeleft",function(){
+			clearInterval(timer);
+			$(this).attr("src",arrPic[num-1]);
+			setTimeout(function(){
+				timer =setInterval(function(){
+					slider();
+				},1500);
+			},3000)
+		})
+		 
+		
+		
+	</script>
+	<script>
+			window.onload=function(){
+				 //先获取html的元素
+				document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+				//resize 事件 当用户企图改变浏览器窗口大小的时候 被触发
+				window.addEventListener("resize",function(){
+					document.documentElement.style.fontSize=document.documentElement.clientWidth/3.2+'px';
+				},false);
+			};
+		</script>
+	</body>
+	
+	
+</html>
